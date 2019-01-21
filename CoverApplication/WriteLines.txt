@@ -1,0 +1,15 @@
+ambit
+
+Password: ----------
+
+ftp-gpon$retsh foxconn168!
+
+# 
+# prolinecmd serialnum display
+mtd[readflash]:device=reservearea tclen=512 tcoffset=656384
+Unlocking reservearea ...
+Reading from reservearea to /tmp/prolinecwmppararead ... 
+SerialNum:2C6FC9583C50
+
+# 
+# 

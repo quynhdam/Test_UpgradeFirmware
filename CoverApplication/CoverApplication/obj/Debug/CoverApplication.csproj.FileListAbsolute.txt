@@ -1,0 +1,9 @@
+c:\users\quynhdam\documents\visual studio 2015\Projects\CoverApplication\CoverApplication\bin\Debug\CoverApplication.exe.config
+c:\users\quynhdam\documents\visual studio 2015\Projects\CoverApplication\CoverApplication\bin\Debug\CoverApplication.exe
+c:\users\quynhdam\documents\visual studio 2015\Projects\CoverApplication\CoverApplication\bin\Debug\CoverApplication.pdb
+c:\users\quynhdam\documents\visual studio 2015\Projects\CoverApplication\CoverApplication\obj\Debug\CoverApplication.csprojResolveAssemblyReference.cache
+c:\users\quynhdam\documents\visual studio 2015\Projects\CoverApplication\CoverApplication\obj\Debug\CoverApplication.Form1.resources
+c:\users\quynhdam\documents\visual studio 2015\Projects\CoverApplication\CoverApplication\obj\Debug\CoverApplication.Properties.Resources.resources
+c:\users\quynhdam\documents\visual studio 2015\Projects\CoverApplication\CoverApplication\obj\Debug\CoverApplication.csproj.GenerateResource.Cache
+c:\users\quynhdam\documents\visual studio 2015\Projects\CoverApplication\CoverApplication\obj\Debug\CoverApplication.exe
+c:\users\quynhdam\documents\visual studio 2015\Projects\CoverApplication\CoverApplication\obj\Debug\CoverApplication.pdb
