@@ -1,0 +1,9 @@
+c:\users\quynhdam\documents\visual studio 2015\Projects\Test_FirmwareUpgrade\Test_FirmwareUpgrade\bin\Debug\Test_FirmwareUpgrade.exe.config
+c:\users\quynhdam\documents\visual studio 2015\Projects\Test_FirmwareUpgrade\Test_FirmwareUpgrade\bin\Debug\Test_FirmwareUpgrade.exe
+c:\users\quynhdam\documents\visual studio 2015\Projects\Test_FirmwareUpgrade\Test_FirmwareUpgrade\bin\Debug\Test_FirmwareUpgrade.pdb
+c:\users\quynhdam\documents\visual studio 2015\Projects\Test_FirmwareUpgrade\Test_FirmwareUpgrade\obj\Debug\Test_FirmwareUpgrade.csprojResolveAssemblyReference.cache
+c:\users\quynhdam\documents\visual studio 2015\Projects\Test_FirmwareUpgrade\Test_FirmwareUpgrade\obj\Debug\Test_FirmwareUpgrade.Form1.resources
+c:\users\quynhdam\documents\visual studio 2015\Projects\Test_FirmwareUpgrade\Test_FirmwareUpgrade\obj\Debug\Test_FirmwareUpgrade.Properties.Resources.resources
+c:\users\quynhdam\documents\visual studio 2015\Projects\Test_FirmwareUpgrade\Test_FirmwareUpgrade\obj\Debug\Test_FirmwareUpgrade.csproj.GenerateResource.Cache
+c:\users\quynhdam\documents\visual studio 2015\Projects\Test_FirmwareUpgrade\Test_FirmwareUpgrade\obj\Debug\Test_FirmwareUpgrade.exe
+c:\users\quynhdam\documents\visual studio 2015\Projects\Test_FirmwareUpgrade\Test_FirmwareUpgrade\obj\Debug\Test_FirmwareUpgrade.pdb
