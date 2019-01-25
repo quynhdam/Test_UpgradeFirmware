@@ -21,15 +21,14 @@ namespace Test_FirmwareUpgrade
         private delegate void SetTextDeleg(string data);
 
         delegate void SetTextCallback(string text);
-        int count = 1;
         public Form1()
         {
             InitializeComponent();
             serialPort.ReadTimeout = 1000;
             serialPort.DataReceived += new SerialDataReceivedEventHandler(serialPort_DataReceived);
             label2.TextChanged -= label2_TextChanged_1;
-
         }
+        
         int second = 0;
         int minute = 0;
         private void LoadTime()
@@ -136,11 +135,7 @@ namespace Test_FirmwareUpgrade
                 serialPort.WriteLine("ambit");
                 serialPort.WriteLine("ambitdebug");
                 serialPort.WriteLine("retsh foxconn168!");
-
-            }
-            
-            if (txtLog.Text.Trim() == "#")
-            {
+                txtAllLog.Clear();
                 timerEnter.Stop();
                 string text = "prolinecmd serialnum display";
                 serialPort.WriteLine("");
@@ -159,7 +154,7 @@ namespace Test_FirmwareUpgrade
                 }
                 Thread.Sleep(2000);
                 
-                //Second();             
+                Second();             
                 txtLog.TextChanged -= txtLog_TextChanged;
                 }
         }
@@ -176,7 +171,7 @@ namespace Test_FirmwareUpgrade
             string output = ps.StandardOutput.ReadToEnd().Trim();
             ps.WaitForExit();
             string[] text = new[] { output };
-            textBox1.Text = output.ToString();
+           // textBox1.Text = output.ToString();
             int n = output.IndexOf("Timeout expired. Retries expired.");
             int m = output.IndexOf("Error 10054.Please check whether the TFTP server is available.");
             if (n > -1 || m > -1)
@@ -232,33 +227,12 @@ namespace Test_FirmwareUpgrade
 
         private void label2_TextChanged_1(object sender, EventArgs e)
         {
-            RunSecond();
-
-        }
-
-        private void Second()
-        {
-            serialPort.WriteLine("reboot");
-            //txtLog.TextChanged += txtLog_TextChanged;
-            label1.TextChanged += label1_TextChanged;
-            label2.TextChanged += label2_TextChanged_1;
-
-            RunSecond();
-            SoSanh();
-
-        }
-        private void RunSecond()
-        {
             if (txtLog.Text.Trim() == "login:")
             {
-
                 serialPort.WriteLine("ambit");
                 serialPort.WriteLine("ambitdebug");
                 serialPort.WriteLine("retsh foxconn168!");
-
-            }
-            if (txtLog.Text.Trim() == "#")
-            {
+                txtAllLog.Clear();
                 timerEnter.Stop();
                 string text = "prolinecmd serialnum display";
                 serialPort.WriteLine("");
@@ -267,8 +241,6 @@ namespace Test_FirmwareUpgrade
                 serialPort.WriteLine("");
                 txtAllLog.Text = serialPort.ReadExisting();
                 string[] lines = txtAllLog.Lines.ToArray();
-                //label2.Text = txtAllLog.Text;
-                //string n = txtkq.Text.Trim();
                 using (StreamWriter outputFile = new StreamWriter(Path.Combine("C:\\Users\\QuynhDam\\Documents\\Visual Studio 2015\\Projects\\Test_FirmwareUpgrade", "WriteLines2.txt")))
                 {
                     foreach (string n in lines)
@@ -278,17 +250,53 @@ namespace Test_FirmwareUpgrade
 
                 }
                 Thread.Sleep(2000);
+                string file1 = "C:\\Users\\QuynhDam\\Documents\\Visual Studio 2015\\Projects\\Test_FirmwareUpgrade\\WriteLines1.txt";
+                string file2 = "C:\\Users\\QuynhDam\\Documents\\Visual Studio 2015\\Projects\\Test_FirmwareUpgrade\\WriteLines2.txt";
+
+                using (StreamReader li = new StreamReader(file1))
+                using (StreamReader li2 = new StreamReader(file2))
+                {
+
+                    while (true)
+                    {
+                        if (li.EndOfStream || li2.EndOfStream)
+                            break;
+                        string liTxt = li.ReadLine();
+                        string li2Txt = li2.ReadLine();
+                        if (!liTxt.Equals(li2Txt))
+                        {
+                            MessageBox.Show("Upgrade NOT OK");
+                            Application.Exit();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Upgrade OK");
+                            Application.Exit();
+
+                        }
+                    }
+
+
+                }
+                serialPort.Close();
             }
+
         }
+
+        private void Second()
+        {
+            serialPort.WriteLine("reboot");
+            label1.TextChanged += label1_TextChanged;
+            label2.TextChanged += label2_TextChanged_1;
+            timerEnter.Start();
+
+        }
+   
         private void SoSanh()
         {
             string file1 = "C:\\Users\\QuynhDam\\Documents\\Visual Studio 2015\\Projects\\Test_FirmwareUpgrade\\WriteLines1.txt";
             string file2 = "C:\\Users\\QuynhDam\\Documents\\Visual Studio 2015\\Projects\\Test_FirmwareUpgrade\\WriteLines2.txt";
-            //if ((!File.Exists(file1)) || (!File.Exists(file2)))
-            //{
-            //    MessageBox.Show("File1 va File2 khong ton tai!!!");
-            //    return;
-            //}
+            
             using (StreamReader li = new StreamReader(file1))
             using (StreamReader li2 = new StreamReader(file2))
             {
@@ -312,5 +320,6 @@ namespace Test_FirmwareUpgrade
 
             }
         }
+        
     }
 }

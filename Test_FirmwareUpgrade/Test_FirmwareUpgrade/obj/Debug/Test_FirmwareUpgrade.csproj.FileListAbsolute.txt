@@ -7,3 +7,6 @@ c:\users\quynhdam\documents\visual studio 2015\Projects\Test_FirmwareUpgrade\Tes
 c:\users\quynhdam\documents\visual studio 2015\Projects\Test_FirmwareUpgrade\Test_FirmwareUpgrade\obj\Debug\Test_FirmwareUpgrade.csproj.GenerateResource.Cache
 c:\users\quynhdam\documents\visual studio 2015\Projects\Test_FirmwareUpgrade\Test_FirmwareUpgrade\obj\Debug\Test_FirmwareUpgrade.exe
 c:\users\quynhdam\documents\visual studio 2015\Projects\Test_FirmwareUpgrade\Test_FirmwareUpgrade\obj\Debug\Test_FirmwareUpgrade.pdb
+E:\Test_FirmwareUpgrade\Test_FirmwareUpgrade\bin\Debug\Test_FirmwareUpgrade.exe.config
+E:\Test_FirmwareUpgrade\Test_FirmwareUpgrade\obj\Debug\Test_FirmwareUpgrade.exe
+E:\Test_FirmwareUpgrade\Test_FirmwareUpgrade\obj\Debug\Test_FirmwareUpgrade.pdb
