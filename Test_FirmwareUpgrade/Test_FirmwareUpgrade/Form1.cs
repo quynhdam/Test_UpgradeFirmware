@@ -137,13 +137,15 @@ namespace Test_FirmwareUpgrade
                 serialPort.WriteLine("retsh foxconn168!");
                 txtAllLog.Clear();
                 timerEnter.Stop();
+                Thread.Sleep(2000);
                 string text = "prolinecmd serialnum display";
                 serialPort.WriteLine("");
-                Thread.Sleep(10);
+                Thread.Sleep(1000);
                 serialPort.WriteLine(text);
                 serialPort.WriteLine("");
                 txtAllLog.Text = serialPort.ReadExisting();
                 string[] lines = txtAllLog.Lines.ToArray();
+                Thread.Sleep(1000);
                 using (StreamWriter outputFile = new StreamWriter(Path.Combine("C:\\Users\\QuynhDam\\Documents\\Visual Studio 2015\\Projects\\Test_FirmwareUpgrade", "WriteLines1.txt")))
                 {
                     foreach (string n in lines)
@@ -171,7 +173,6 @@ namespace Test_FirmwareUpgrade
             string output = ps.StandardOutput.ReadToEnd().Trim();
             ps.WaitForExit();
             string[] text = new[] { output };
-           // textBox1.Text = output.ToString();
             int n = output.IndexOf("Timeout expired. Retries expired.");
             int m = output.IndexOf("Error 10054.Please check whether the TFTP server is available.");
             if (n > -1 || m > -1)
@@ -234,13 +235,15 @@ namespace Test_FirmwareUpgrade
                 serialPort.WriteLine("retsh foxconn168!");
                 txtAllLog.Clear();
                 timerEnter.Stop();
+                Thread.Sleep(2000);
                 string text = "prolinecmd serialnum display";
                 serialPort.WriteLine("");
-                Thread.Sleep(10);
+                Thread.Sleep(1000);
                 serialPort.WriteLine(text);
                 serialPort.WriteLine("");
                 txtAllLog.Text = serialPort.ReadExisting();
                 string[] lines = txtAllLog.Lines.ToArray();
+                Thread.Sleep(1000);
                 using (StreamWriter outputFile = new StreamWriter(Path.Combine("C:\\Users\\QuynhDam\\Documents\\Visual Studio 2015\\Projects\\Test_FirmwareUpgrade", "WriteLines2.txt")))
                 {
                     foreach (string n in lines)
@@ -250,33 +253,71 @@ namespace Test_FirmwareUpgrade
 
                 }
                 Thread.Sleep(2000);
-                string file1 = "C:\\Users\\QuynhDam\\Documents\\Visual Studio 2015\\Projects\\Test_FirmwareUpgrade\\WriteLines1.txt";
-                string file2 = "C:\\Users\\QuynhDam\\Documents\\Visual Studio 2015\\Projects\\Test_FirmwareUpgrade\\WriteLines2.txt";
+                //string file1 = "C:\\Users\\QuynhDam\\Documents\\Visual Studio 2015\\Projects\\Test_FirmwareUpgrade\\WriteLines1.txt";
+                //string file2 = "C:\\Users\\QuynhDam\\Documents\\Visual Studio 2015\\Projects\\Test_FirmwareUpgrade\\WriteLines2.txt";
 
-                using (StreamReader li = new StreamReader(file1))
-                using (StreamReader li2 = new StreamReader(file2))
+                //using (StreamReader li = new StreamReader(file1))
+                //using (StreamReader li2 = new StreamReader(file2))
+                //{
+
+                //    while (true)
+                //    {
+                //        if (li.EndOfStream || li2.EndOfStream)
+                //            break;
+                //        string liTxt = li.ReadLine();
+                //        string li2Txt = li2.ReadLine();
+                //        if (!liTxt.Equals(li2Txt))
+                //        {
+                //            MessageBox.Show("Upgrade NOT OK");
+                //            Application.Exit();
+                //        }
+                //        else
+                //        {
+                //            MessageBox.Show("Upgrade OK");
+                //            Application.Exit();
+
+                //        }
+                //    }
+
+
+                //}
+                string[] lines1 = File.ReadAllLines("C:\\Users\\QuynhDam\\Documents\\Visual Studio 2015\\Projects\\Test_FirmwareUpgrade\\WriteLines1.txt");
+                string text1 = string.Concat(lines1);
+                string value1 = String.Empty;
+
+                List<string> keyValuePairs1 = text1.Split('.').ToList();
+
+                foreach (var keyValuePair1 in keyValuePairs1)
                 {
-
-                    while (true)
+                    string key1 = keyValuePair1.Split(':')[0].Trim();
+                    if (key1 == "SerialNum")
                     {
-                        if (li.EndOfStream || li2.EndOfStream)
-                            break;
-                        string liTxt = li.ReadLine();
-                        string li2Txt = li2.ReadLine();
-                        if (!liTxt.Equals(li2Txt))
-                        {
-                            MessageBox.Show("Upgrade NOT OK");
-                            Application.Exit();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Upgrade OK");
-                            Application.Exit();
-
-                        }
+                        value1 = keyValuePair1.Split(':')[1];
                     }
+                }
+                string[] lines2 = File.ReadAllLines("C:\\Users\\QuynhDam\\Documents\\Visual Studio 2015\\Projects\\Test_FirmwareUpgrade\\WriteLines2.txt");
+                string text2 = string.Concat(lines1);
+                string value2 = String.Empty;
 
+                List<string> keyValuePairs2 = text1.Split('.').ToList();
 
+                foreach (var keyValuePair2 in keyValuePairs2)
+                {
+                    string key2 = keyValuePair2.Split(':')[0].Trim();
+                    if (key2 == "SerialNum")
+                    {
+                        value2 = keyValuePair2.Split(':')[1];
+                    }
+                }
+                if (value1 == value2)
+                {
+                    MessageBox.Show("OK");
+                    Application.Exit();
+                }
+                else
+                {
+                    MessageBox.Show("Not OK");
+                    Application.Exit();
                 }
                 serialPort.Close();
             }
@@ -292,34 +333,7 @@ namespace Test_FirmwareUpgrade
 
         }
    
-        private void SoSanh()
-        {
-            string file1 = "C:\\Users\\QuynhDam\\Documents\\Visual Studio 2015\\Projects\\Test_FirmwareUpgrade\\WriteLines1.txt";
-            string file2 = "C:\\Users\\QuynhDam\\Documents\\Visual Studio 2015\\Projects\\Test_FirmwareUpgrade\\WriteLines2.txt";
-            
-            using (StreamReader li = new StreamReader(file1))
-            using (StreamReader li2 = new StreamReader(file2))
-            {
 
-                while (true)
-                {
-                    if (li.EndOfStream || li2.EndOfStream)
-                        break;
-                    string liTxt = li.ReadLine();
-                    string li2Txt = li2.ReadLine();
-                    if (!liTxt.Equals(li2Txt))
-                    {
-                        MessageBox.Show("Upgrade NOT OK");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Upgrade OK");
-                    }
-                }
-
-
-            }
-        }
         
     }
 }
